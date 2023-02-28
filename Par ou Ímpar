@@ -1,0 +1,27 @@
+from random import randint
+v = 0
+while True:
+    PL = int(input('Digite um valor: '))
+    PC = randint(1, 10)
+    TT = PL + PC
+    TP = ''
+    TP = str(input('PAR ou IMPAR? [P/I]')).strip().upper()[0]
+    while TP not in 'PI':
+        print(f'Você jogou {PL}, o computador jogou {PC} e o total foi {TT}')
+    print('DEU PAR' if TT % 2 == 0 else 'DEU IMPAR')
+    if TP == 'P':
+        if TT % 2 == 0:
+            print('Você venceu!!!')
+            v += 1
+        else:
+            print('Você perdeu')
+            break
+    elif TP == 'I':
+        if TT % 2 == 1:
+            print('Você venceu')
+            v += 1
+        else:
+            print('Você perdeu')
+            break
+    print('Vamos jogar novamente ...')
+print(f'GAME OVER!!! Você venceu {v} vezes.')
