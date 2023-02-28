@@ -1,0 +1,5 @@
+d = int(input('Quantos dias o carro ficou alugado? '))
+km = float(input('O carro percorreu quantos quilometros? '))
+p = (60 * d) + (0.15 * km)
+
+print(f'O valor a ser pago é R$ {p}')
