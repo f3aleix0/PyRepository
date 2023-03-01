@@ -1,0 +1,41 @@
+from datetime import datetime
+
+print ('ESTACIONAMENTO DO TIÃO')
+print('[1] ENTRADA')
+print('[2] SAÍDA')
+print('[3] FINALIZAR')
+opc = int(input('[?]'))
+
+if opc == 1:
+
+    data_hora_atual = datetime.today()
+    data_hora_em_texto = data_hora_atual.strftime("%d/%m/%y %H:%M")
+    placa = input(str("Placa: ")).strip().upper()
+    carmodel = input(str("Marca/modelo: ")).strip().upper()
+    cor = input(str("Cor: ")).strip().upper()
+    print("=-" * 15)
+    print(f"Entrada: {data_hora_em_texto:.>21}")
+    print(f"Placa: {placa:.>23}")
+    print(f"Veículo: {carmodel:.>21}")
+    print(f"Cor: {cor:.>25}")
+    print("=-" * 15)
+
+elif opc == 2:
+    import datetime
+    while True:
+        entrada = input("Entrada do veículo  [dd/mm/yyyy hh:mm], ou [SAIR] para encerrar: ")   
+        if entrada.lower() == 'sair':
+            print("Saindo...")
+            break  
+        try:
+            data_entrada = datetime.datetime.strptime(entrada, '%d/%m/%Y %H:%M')
+        except ValueError:
+            print("Formato inválido. Tente novamente.")
+            continue
+    agora = datetime.datetime.now()
+    duracao = agora - data_entrada
+    horas = int(duracao.total_seconds() / 3600)
+    minutos = int((duracao.total_seconds() % 3600) / 60)
+    print(f'Estadia de {horas}h e {minutos}')
+else:
+    print('Finalizando... ')
