@@ -1,13 +1,10 @@
 from datetime import datetime
-
 print ('ESTACIONAMENTO DO TIÃO')
 print('[1] ENTRADA')
 print('[2] SAÍDA')
 print('[3] FINALIZAR')
-opc = int(input('[?]'))
-
+opc = int(input('[?] '))
 if opc == 1:
-
     data_hora_atual = datetime.today()
     data_hora_em_texto = data_hora_atual.strftime("%d/%m/%y %H:%M")
     placa = input(str("Placa: ")).strip().upper()
@@ -19,7 +16,6 @@ if opc == 1:
     print(f"Veículo: {carmodel:.>21}")
     print(f"Cor: {cor:.>25}")
     print("=-" * 15)
-
 elif opc == 2:
     import datetime
     while True:
@@ -30,12 +26,14 @@ elif opc == 2:
         try:
             data_entrada = datetime.datetime.strptime(entrada, '%d/%m/%Y %H:%M')
         except ValueError:
-            print("Formato inválido. Tente novamente.")
+            print("Formato de entrada inválido. Tente novamente.")
             continue
     agora = datetime.datetime.now()
     duracao = agora - data_entrada
     horas = int(duracao.total_seconds() / 3600)
     minutos = int((duracao.total_seconds() % 3600) / 60)
-    print(f'Estadia de {horas}h e {minutos}')
+    valor = ((horas-1)*5)+10
+    print("O veículo ficou estacionado por {} horas e {} minutos.".format(horas, minutos))
+    print(f"Total R$ {valor:.2f}")
 else:
     print('Finalizando... ')
