@@ -19,7 +19,7 @@ if opc == 1:
 elif opc == 2:
     import datetime
     while True:
-        entrada = input("Entrada do veículo  [dd/mm/yyyy hh:mm], ou [SAIR] para encerrar: ")   
+        entrada = input("Entrada do veículo  [dd/mm/yyyy hh:mm], ou [SAIR] para encerrar: ") 
         if entrada.lower() == 'sair':
             print("Saindo...")
             break  
@@ -28,12 +28,19 @@ elif opc == 2:
         except ValueError:
             print("Formato de entrada inválido. Tente novamente.")
             continue
-    agora = datetime.datetime.now()
-    duracao = agora - data_entrada
-    horas = int(duracao.total_seconds() / 3600)
-    minutos = int((duracao.total_seconds() % 3600) / 60)
-    valor = ((horas-1)*5)+10
-    print("O veículo ficou estacionado por {} horas e {} minutos.".format(horas, minutos))
-    print(f"Total R$ {valor:.2f}")
+        resp = ' '
+        if resp not in 'SN':
+            resp = str(input('Prosseguir? [S/N]')).upper().strip()[0]
+        if resp == 'S':
+            break
+        
+        agora = datetime.datetime.now()
+        duracao = agora - data_entrada
+        horas = int(duracao.total_seconds() / 3600)
+        minutos = int((duracao.total_seconds() % 3600) / 60)
+        valor = ((horas-1)*5)+10
+        print("O veículo ficou estacionado por {} horas e {} minutos.".format(horas, minutos))
+        print(f"Total R$ {valor:.2f}")
 else:
     print('Finalizando... ')
+
